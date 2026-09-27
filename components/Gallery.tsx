@@ -9,7 +9,15 @@ import ArtworkCard from "@/components/ArtworkCard";
 
 const HIDE_DELAY_MS = 2000;
 
-function Caption({ artwork, visible }: { artwork: Artwork; visible: boolean }) {
+type ArtworkSlide = {
+  src: string;
+  alt: string;
+  name: string;
+  price: number;
+  available: boolean;
+};
+
+function Caption({ slide, visible }: { slide: ArtworkSlide; visible: boolean }) {
   return (
     <div
       className={`pointer-events-none absolute bottom-4 left-4 z-20 max-w-[75%] transition-opacity duration-300 ${
@@ -17,11 +25,11 @@ function Caption({ artwork, visible }: { artwork: Artwork; visible: boolean }) {
       }`}
     >
       <p className="font-display text-base text-white drop-shadow-md sm:text-lg">
-        {artwork.name}
+        {slide.name}
       </p>
       <p className="text-sm text-white/80 drop-shadow-md">
-        ₹{artwork.price.toLocaleString("en-IN")}
-        {!artwork.available && " · Sold"}
+        ₹{slide.price.toLocaleString("en-IN")}
+        {!slide.available && " · Sold"}
       </p>
     </div>
   );
@@ -29,7 +37,6 @@ function Caption({ artwork, visible }: { artwork: Artwork; visible: boolean }) {
 
 export default function Gallery({ artworks }: { artworks: Artwork[] }) {
   const [index, setIndex] = useState(-1);
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [zoomed, setZoomed] = useState(false);
   const [timerVisible, setTimerVisible] = useState(true);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -42,7 +49,6 @@ export default function Gallery({ artworks }: { artworks: Artwork[] }) {
 
   useEffect(() => {
     if (index >= 0) {
-      setCurrentIndex(index);
       setZoomed(false);
       bump();
     } else if (timerRef.current) {
@@ -56,7 +62,6 @@ export default function Gallery({ artworks }: { artworks: Artwork[] }) {
     };
   }, []);
 
-  const artwork = artworks[currentIndex];
   const visible = timerVisible && !zoomed;
 
   return (
@@ -71,12 +76,17 @@ export default function Gallery({ artworks }: { artworks: Artwork[] }) {
         open={index >= 0}
         close={() => setIndex(-1)}
         index={index}
-        slides={artworks.map((a) => ({ src: a.image, alt: a.name }))}
+        slides={artworks.map((a) => ({
+          src: a.image,
+          alt: a.name,
+          name: a.name,
+          price: a.price,
+          available: a.available,
+        }))}
         plugins={[Zoom]}
         zoom={{ maxZoomPixelRatio: 3, scrollToZoom: true }}
         on={{
-          view: ({ index: i }) => {
-            setCurrentIndex(i);
+          view: () => {
             setZoomed(false);
             bump();
           },
@@ -84,7 +94,19 @@ export default function Gallery({ artworks }: { artworks: Artwork[] }) {
           zoom: ({ zoom }) => setZoomed(zoom > 1),
         }}
         render={{
-          controls: () => (artwork ? <Caption artwork={artwork} visible={visible} /> : null),
+          slideFooter: ({ slide }) => (
+            <Caption slide={slide as unknown as ArtworkSlide} visible={visible} />
+          ),
+          controls: () => (
+            <style>{`
+              .yarl__navigation_prev,
+              .yarl__navigation_next {
+                opacity: ${visible ? 1 : 0};
+                transition: opacity 300ms ease;
+                pointer-events: ${visible ? "auto" : "none"};
+              }
+            `}</style>
+          ),
         }}
       />
     </>
