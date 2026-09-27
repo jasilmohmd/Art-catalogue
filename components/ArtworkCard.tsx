@@ -2,12 +2,22 @@ import Image from "next/image";
 import type { Artwork } from "@/data/artworks";
 import BuyButton from "@/components/BuyButton";
 
-export default function ArtworkCard({ artwork }: { artwork: Artwork }) {
+type ArtworkCardProps = {
+  artwork: Artwork;
+  onImageClick?: () => void;
+};
+
+export default function ArtworkCard({ artwork, onImageClick }: ArtworkCardProps) {
   const { name, price, image, available } = artwork;
 
   return (
     <div className="group flex flex-col overflow-hidden rounded-xl border border-stone-200 bg-white shadow-sm transition-shadow duration-300 hover:shadow-lg">
-      <div className="relative aspect-[4/5] w-full overflow-hidden bg-stone-100">
+      <button
+        type="button"
+        onClick={onImageClick}
+        aria-label={`View ${name} fullscreen`}
+        className="relative block aspect-[4/5] w-full cursor-zoom-in overflow-hidden bg-stone-100"
+      >
         <Image
           src={image}
           alt={name}
@@ -24,7 +34,7 @@ export default function ArtworkCard({ artwork }: { artwork: Artwork }) {
             </span>
           </div>
         )}
-      </div>
+      </button>
       <div className="flex flex-1 flex-col gap-1 p-5">
         <h2 className="font-display text-lg leading-snug text-stone-900">{name}</h2>
         <p className="text-sm font-medium text-stone-500">

@@ -1,5 +1,5 @@
 import { artworks } from "@/data/artworks";
-import ArtworkCard from "@/components/ArtworkCard";
+import Gallery from "@/components/Gallery";
 
 export default function Home() {
   return (
@@ -30,11 +30,7 @@ export default function Home() {
         </div>
 
         {artworks.length > 0 ? (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {artworks.map((artwork) => (
-              <ArtworkCard key={artwork.id} artwork={artwork} />
-            ))}
-          </div>
+          <Gallery artworks={artworks} />
         ) : (
           <p className="py-20 text-center text-sm text-stone-400">
             No artworks listed yet — check back soon.
