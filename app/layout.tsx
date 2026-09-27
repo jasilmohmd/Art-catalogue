@@ -15,8 +15,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Art Catalogue",
-  description: "A simple catalogue of paintings for sale",
+  title: "Sneha sparsham",
+  description: "A collection of original paintings for sale",
 };
 
 export default function RootLayout({
