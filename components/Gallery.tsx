@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
@@ -64,6 +64,18 @@ export default function Gallery({ artworks }: { artworks: Artwork[] }) {
 
   const visible = timerVisible && !zoomed;
 
+  const slides = useMemo(
+    () =>
+      artworks.map((a) => ({
+        src: a.image,
+        alt: a.name,
+        name: a.name,
+        price: a.price,
+        available: a.available,
+      })),
+    [artworks]
+  );
+
   return (
     <>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -76,13 +88,7 @@ export default function Gallery({ artworks }: { artworks: Artwork[] }) {
         open={index >= 0}
         close={() => setIndex(-1)}
         index={index}
-        slides={artworks.map((a) => ({
-          src: a.image,
-          alt: a.name,
-          name: a.name,
-          price: a.price,
-          available: a.available,
-        }))}
+        slides={slides}
         plugins={[Zoom]}
         zoom={{ maxZoomPixelRatio: 3, scrollToZoom: true }}
         on={{
@@ -91,7 +97,7 @@ export default function Gallery({ artworks }: { artworks: Artwork[] }) {
             bump();
           },
           click: () => bump(),
-          zoom: ({ zoom }) => setZoomed(zoom > 1),
+          zoom: ({ zoom }) => setZoomed(zoom > 1.01),
         }}
         render={{
           slideFooter: ({ slide }) => (
