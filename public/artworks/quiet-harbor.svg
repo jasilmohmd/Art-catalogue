@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+  <rect width="800" height="1000" fill="#a9c9d6"/>
+  <rect y="600" width="800" height="400" fill="#2f5d73"/>
+  <rect x="150" y="500" width="40" height="200" fill="#3a3a3a"/>
+  <rect x="500" y="470" width="40" height="230" fill="#3a3a3a"/>
+  <text x="400" y="960" font-family="sans-serif" font-size="28" fill="#eaf4f8" text-anchor="middle">Quiet Harbor (placeholder)</text>
+</svg>
