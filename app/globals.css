@@ -3,5 +3,10 @@
 @tailwind utilities;
 
 body {
-  background-color: #fafaf9;
+  background-color: #faf9f7;
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
 }
