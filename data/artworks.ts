@@ -6,26 +6,36 @@ export type Artwork = {
   available: boolean; // false = sold
 };
 
+// Add, remove, or edit entries below to update the catalogue.
+// price is a placeholder — update with the real price.
+// image must point to a file placed under /public/artworks.
 export const artworks: Artwork[] = [
   {
-    id: "sunset-over-hills",
-    name: "Sunset Over Hills",
-    price: 4500,
-    image: "/artworks/sunset-over-hills.svg",
+    id: "autumn-blossoms",
+    name: "Autumn Blossoms",
+    price: 1200,
+    image: "/artworks/autumn.jpeg",
     available: true,
   },
   {
-    id: "quiet-harbor",
-    name: "Quiet Harbor",
-    price: 6200,
-    image: "/artworks/quiet-harbor.svg",
+    id: "red-billed-hornbill",
+    name: "Red-billed Hornbill",
+    price: 2500,
+    image: "/artworks/bird.jpeg",
     available: true,
   },
   {
-    id: "autumn-path",
-    name: "Autumn Path",
-    price: 3800,
-    image: "/artworks/autumn-path.svg",
-    available: false,
+    id: "moon-night",
+    name: "Moon Night",
+    price: 1800,
+    image: "/artworks/moon-night.jpeg",
+    available: true,
+  },
+  {
+    id: "sailing-boat",
+    name: "Sailing Boat",
+    price: 3200,
+    image: "/artworks/sailing-boat.jpeg",
+    available: true,
   },
 ];
