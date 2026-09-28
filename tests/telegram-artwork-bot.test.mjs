@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   parseArtworkCaption,
+  parseArtworkEditCaption,
   parseArtworkFilename,
   renderArtworkDataFile,
   statusFilename,
@@ -25,6 +26,21 @@ test("creates sold artwork and can toggle its filename", () => {
   assert.equal(sold.available, false);
   assert.equal(statusFilename(sold, true), "moon_night-1800.png");
   assert.equal(statusFilename(sold, false), "moon_night-1800-sold.png");
+});
+
+test("edits an artwork name and price while preserving its sold state", () => {
+  assert.deepEqual(parseArtworkEditCaption("New Moon | 2400", ".jpeg", false), {
+    id: "new-moon",
+    key: parseArtworkFilename("new_moon-2400-sold.jpeg").key,
+    fileName: "new_moon-2400-sold.jpeg",
+    name: "New Moon",
+    price: 2400,
+    available: false,
+  });
+  assert.throws(
+    () => parseArtworkEditCaption("New Moon | 2400 | sold", ".jpeg", false),
+    /Reply with the new title and price/
+  );
 });
 
 test("rejects invalid captions and unsupported formats", () => {

@@ -9,7 +9,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "node --test"
+    "test": "node --test",
+    "telegram:commands": "node scripts/configure-telegram-commands.mjs"
   },
   "dependencies": {
     "next": "^15.0.0",

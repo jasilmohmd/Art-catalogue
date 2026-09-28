@@ -21,6 +21,8 @@ This is a static Next.js App Router catalogue. Artwork metadata is generated fro
 - Bot credentials are Vercel environment variables only. Never add a real token to source control, documentation, or client-side `NEXT_PUBLIC_*` variables.
 - The bot uses GitHub's Git Database API to commit artwork changes atomically. This lets Vercel rebuild from the same `main` branch without a separate database or file store.
 - Preserve one-commit artwork mutations: add/remove/status changes must update the image file and generated `data/artworks.ts` together.
+- Editing is intentionally stateless: the Edit button sends a force-reply prompt containing the artwork key, then the reply updates the name and price while preserving image and availability. Do not replace this with in-memory conversation state because Vercel Functions are ephemeral.
+- Keep `scripts/configure-telegram-commands.mjs` separate from builds. It registers Telegram's command suggestions only when run explicitly with a local `TELEGRAM_BOT_TOKEN`.
 
 ## Development and verification
 

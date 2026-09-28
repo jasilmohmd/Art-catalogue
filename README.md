@@ -53,6 +53,7 @@ Only the Telegram user IDs listed in `TELEGRAM_ADMIN_IDS` can manage the catalog
 - `/id` — return your Telegram user ID for initial setup.
 - `/help` — show usage instructions.
 - `/artworks` — list each artwork with View, Mark sold/available, and Delete controls.
+- Tap **Edit** from `/artworks`, then reply to the bot prompt with `New title | new price`. The existing sold state and image are preserved.
 - Send an image with the caption `Title | price` to add it. Add `| sold` as a third value to create an unavailable artwork.
 
 Deletion requires a confirmation button. Images may be sent as a Telegram photo or image document and must be 10 MB or smaller.
@@ -94,6 +95,17 @@ Verify it with:
 ```powershell
 Invoke-RestMethod -Uri "https://api.telegram.org/bot$env:TELEGRAM_BOT_TOKEN/getWebhookInfo"
 ```
+
+### Enable slash-command suggestions
+
+After the bot is deployed, configure Telegram's command menu once from PowerShell:
+
+```powershell
+$env:TELEGRAM_BOT_TOKEN = "your-bot-token"
+npm run telegram:commands
+```
+
+Typing `/` in the bot chat will then suggest `/start`, `/help`, `/artworks`, `/edit`, and `/id`.
 
 ## Project structure
 
