@@ -6,6 +6,7 @@ import {
   parseArtworkFilename,
   renderArtworkDataFile,
   statusFilename,
+  validateImageBytes,
   webhookSecretMatches,
 } from "../lib/telegram-artwork-bot.mjs";
 
@@ -47,6 +48,23 @@ test("rejects invalid captions and unsupported formats", () => {
   assert.throws(() => parseArtworkCaption("Sail Boat | 0", ".jpeg"), /positive whole INR/);
   assert.throws(() => parseArtworkCaption("Sail Boat | 1300 | unavailable", ".jpeg"), /third caption value/);
   assert.throws(() => parseArtworkCaption("Sail Boat | 1300", ".gif"), /JPG/);
+  assert.throws(() => parseArtworkCaption("Sail/Boat | 1300", ".jpeg"), /letters, numbers/);
+  assert.throws(() => parseArtworkCaption(`${"A".repeat(81)} | 1300`, ".jpeg"), /80 characters/);
+  assert.throws(() => parseArtworkCaption("Sail Boat | 10000001", ".jpeg"), /1,00,00,000/);
+});
+
+test("accepts formatted whole-rupee prices", () => {
+  assert.equal(parseArtworkCaption("Sail Boat | 1,300", ".jpeg").price, 1300);
+});
+
+test("validates the uploaded image signature against its extension", () => {
+  const jpeg = Buffer.from([0xff, 0xd8, 0xff, 0xe0]);
+  const png = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
+
+  assert.equal(validateImageBytes(jpeg, ".jpg"), ".jpeg");
+  assert.equal(validateImageBytes(png, ".png"), ".png");
+  assert.throws(() => validateImageBytes(jpeg, ".png"), /does not match/);
+  assert.throws(() => validateImageBytes(Buffer.from("not-an-image"), ".jpeg"), /not a supported image/);
 });
 
 test("compares webhook secrets without accepting an empty value", () => {

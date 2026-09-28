@@ -58,6 +58,8 @@ Only the Telegram user IDs listed in `TELEGRAM_ADMIN_IDS` can manage the catalog
 
 Deletion requires a confirmation button. Images may be sent as a Telegram photo or image document and must be 10 MB or smaller.
 
+Telegram validates every artwork change before it is committed: titles must be 80 characters or fewer and use only letters, numbers, spaces, hyphens, or underscores; prices must be whole INR amounts from 1 to 10,000,000 (commas are accepted); and the uploaded image's real file signature must match its `.jpg`, `.jpeg`, `.png`, `.webp`, or `.avif` extension.
+
 ### Configure Vercel
 
 Add the following Production environment variables in the Vercel project settings. Never commit their real values; `.env.example` lists the keys only.

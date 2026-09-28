@@ -23,6 +23,7 @@ This is a static Next.js App Router catalogue. Artwork metadata is generated fro
 - Preserve one-commit artwork mutations: add/remove/status changes must update the image file and generated `data/artworks.ts` together.
 - Editing is intentionally stateless: the Edit button sends a force-reply prompt containing the artwork key, then the reply updates the name and price while preserving image and availability. Do not replace this with in-memory conversation state because Vercel Functions are ephemeral.
 - Keep `scripts/configure-telegram-commands.mjs` separate from builds. It registers Telegram's command suggestions only when run explicitly with a local `TELEGRAM_BOT_TOKEN`.
+- Validate Telegram artwork input before creating a GitHub commit: enforce the documented title and price constraints, image-size limit, extension allowlist, and image magic bytes. Return clear Telegram errors for invalid input.
 
 ## Development and verification
 
