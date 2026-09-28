@@ -30,11 +30,4 @@ export const artworks: Artwork[] = [
     image: "/artworks/red_billed_hornbill-2500.jpeg",
     available: true,
   },
-  {
-    id: "sailing-boat",
-    name: "Sailing Boat",
-    price: 3200,
-    image: "/artworks/sailing_boat-3200-sold.jpeg",
-    available: false,
-  },
 ];
