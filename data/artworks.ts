@@ -10,13 +10,6 @@ export type Artwork = {
 
 export const artworks: Artwork[] = [
   {
-    id: "adhish",
-    name: "Adhish",
-    price: 30,
-    image: "/artworks/adhish-30-sold.jpg",
-    available: false,
-  },
-  {
     id: "autumn",
     name: "Autumn",
     price: 3000,
@@ -29,6 +22,13 @@ export const artworks: Artwork[] = [
     price: 50000,
     image: "/artworks/fam-50000.jpg",
     available: true,
+  },
+  {
+    id: "hsgg",
+    name: "Hsgg",
+    price: 7000,
+    image: "/artworks/hsgg-7000-sold.jpg",
+    available: false,
   },
   {
     id: "moon",
