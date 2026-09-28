@@ -17,10 +17,10 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
-    id: "moon-night",
-    name: "Moon Night",
-    price: 1800,
-    image: "/artworks/moon_night-1800.jpeg",
+    id: "moon",
+    name: "Moon",
+    price: 2000,
+    image: "/artworks/moon-2000.jpeg",
     available: true,
   },
   {
