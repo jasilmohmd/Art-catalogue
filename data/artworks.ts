@@ -13,8 +13,8 @@ export const artworks: Artwork[] = [
     id: "autumn-blossoms",
     name: "Autumn Blossoms",
     price: 1200,
-    image: "/artworks/autumn_blossoms-1200-sold.jpeg",
-    available: false,
+    image: "/artworks/autumn_blossoms-1200.jpeg",
+    available: true,
   },
   {
     id: "moon-night",
