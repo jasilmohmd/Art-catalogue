@@ -24,6 +24,13 @@ export const artworks: Artwork[] = [
     available: false,
   },
   {
+    id: "fam",
+    name: "Fam",
+    price: 50000,
+    image: "/artworks/fam-50000.jpg",
+    available: true,
+  },
+  {
     id: "moon",
     name: "Moon",
     price: 2000,
