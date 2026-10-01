@@ -66,6 +66,13 @@ export const artworks: Artwork[] = [
     available: false,
   },
   {
+    id: "kadhakali",
+    name: "Kadhakali",
+    price: 8000,
+    image: "/artworks/kadhakali-8000.jpg",
+    available: true,
+  },
+  {
     id: "morning-in-misty-woods",
     name: "Morning In Misty Woods",
     price: 9000,
