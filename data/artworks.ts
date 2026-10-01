@@ -17,6 +17,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "acrylic-abstract-sea",
+    name: "Acrylic Abstract Sea",
+    price: 6000,
+    image: "/artworks/acrylic_abstract_sea-6000.jpg",
+    available: true,
+  },
+  {
     id: "bald-eagle",
     name: "Bald Eagle",
     price: 15000,
