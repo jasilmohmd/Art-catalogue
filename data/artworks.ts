@@ -101,6 +101,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "sunflower",
+    name: "Sunflower",
+    price: 6000,
+    image: "/artworks/sunflower-6000.jpg",
+    available: true,
+  },
+  {
     id: "the-forest-refuge",
     name: "The Forest Refuge",
     price: 15000,
