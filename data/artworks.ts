@@ -66,6 +66,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "orange-breasted-green-pigeons",
+    name: "Orange Breasted Green Pigeons",
+    price: 8000,
+    image: "/artworks/orange_breasted_green_pigeons-8000.jpg",
+    available: true,
+  },
+  {
     id: "red-billed-hornbill",
     name: "Red Billed Hornbill",
     price: 1500,
