@@ -24,6 +24,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "dancing-girl",
+    name: "Dancing Girl",
+    price: 9000,
+    image: "/artworks/dancing_girl-9000.jpg",
+    available: true,
+  },
+  {
     id: "global-warming",
     name: "Global Warming",
     price: 12000,
