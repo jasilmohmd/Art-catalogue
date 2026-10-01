@@ -94,6 +94,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "the-forest-refuge",
+    name: "The Forest Refuge",
+    price: 15000,
+    image: "/artworks/the_forest_refuge-15000.jpg",
+    available: true,
+  },
+  {
     id: "udaan",
     name: "Udaan",
     price: 10000,
