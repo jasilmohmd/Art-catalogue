@@ -24,13 +24,6 @@ export const artworks: Artwork[] = [
     available: false,
   },
   {
-    id: "moon",
-    name: "Moon",
-    price: 2000,
-    image: "/artworks/moon-2000.jpeg",
-    available: true,
-  },
-  {
     id: "red-billed-hornbill",
     name: "Red Billed Hornbill",
     price: 1500,
