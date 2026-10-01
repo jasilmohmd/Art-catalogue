@@ -66,13 +66,6 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
-    id: "hsgg",
-    name: "Hsgg",
-    price: 7000,
-    image: "/artworks/hsgg-7000-sold.jpg",
-    available: false,
-  },
-  {
     id: "kadhakali",
     name: "Kadhakali",
     price: 8000,
