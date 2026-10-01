@@ -73,6 +73,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "lamp",
+    name: "Lamp",
+    price: 5000,
+    image: "/artworks/lamp-5000.jpg",
+    available: true,
+  },
+  {
     id: "morning-in-misty-woods",
     name: "Morning In Misty Woods",
     price: 9000,
