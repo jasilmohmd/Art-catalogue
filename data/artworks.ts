@@ -23,4 +23,11 @@ export const artworks: Artwork[] = [
     image: "/artworks/red_billed_hornbill-1500.jpg",
     available: true,
   },
+  {
+    id: "sandhya",
+    name: "Sandhya",
+    price: 750,
+    image: "/artworks/sandhya-750.jpg",
+    available: true,
+  },
 ];
