@@ -17,6 +17,13 @@ export const artworks: Artwork[] = [
     available: false,
   },
   {
+    id: "morning-in-misty-woods",
+    name: "Morning In Misty Woods",
+    price: 9000,
+    image: "/artworks/morning_in_misty_woods-9000.jpg",
+    available: true,
+  },
+  {
     id: "red-billed-hornbill",
     name: "Red Billed Hornbill",
     price: 1500,
