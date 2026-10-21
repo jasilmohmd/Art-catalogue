@@ -108,6 +108,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "painted-stork",
+    name: "Painted Stork",
+    price: 2000,
+    image: "/artworks/painted_stork-2000.jpg",
+    available: true,
+  },
+  {
     id: "red-billed-hornbill",
     name: "Red Billed Hornbill",
     price: 1500,
