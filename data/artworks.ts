@@ -317,4 +317,11 @@ export const artworks: Artwork[] = [
     image: "/artworks/yakshi-7000.jpg",
     available: true,
   },
+  {
+    id: "yellow-winged-tanager",
+    name: "Yellow Winged Tanager",
+    price: 2000,
+    image: "/artworks/yellow_winged_tanager-2000.jpg",
+    available: true,
+  },
 ];
