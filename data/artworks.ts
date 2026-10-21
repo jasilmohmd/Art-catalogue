@@ -73,6 +73,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "chaandini-raat-whispers-on-moonlit-lake",
+    name: "Chaandini Raat Whispers On Moonlit Lake",
+    price: 15000,
+    image: "/artworks/chaandini_raat_whispers_on_moonlit_lake-15000.jpg",
+    available: true,
+  },
+  {
     id: "chandini-raat-whispers-on-the-moonlit-lake",
     name: "Chandini Raat Whispers On The Moonlit Lake",
     price: 15000,
