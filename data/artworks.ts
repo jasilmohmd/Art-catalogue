@@ -45,6 +45,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "birds-eye-view-maldives",
+    name: "Birds Eye View Maldives",
+    price: 6500,
+    image: "/artworks/birds_eye_view_maldives-6500.jpg",
+    available: true,
+  },
+  {
     id: "blue-tailed-bee-ester",
     name: "Blue Tailed Bee Ester",
     price: 2000,
