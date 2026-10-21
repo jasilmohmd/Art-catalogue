@@ -164,6 +164,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "ocean-wave",
+    name: "Ocean Wave",
+    price: 5500,
+    image: "/artworks/ocean_wave-5500.jpg",
+    available: true,
+  },
+  {
     id: "orange-breasted-green-pigeons",
     name: "Orange Breasted Green Pigeons",
     price: 8000,
