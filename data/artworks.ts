@@ -59,6 +59,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "gaint-squirrel",
+    name: "Gaint Squirrel",
+    price: 2000,
+    image: "/artworks/gaint_squirrel-2000.jpg",
+    available: true,
+  },
+  {
     id: "global-warming",
     name: "Global Warming",
     price: 12000,
