@@ -150,6 +150,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "painted-stork-building-a-nest",
+    name: "Painted Stork Building A Nest",
+    price: 2000,
+    image: "/artworks/painted_stork_building_a_nest-2000.jpg",
+    available: true,
+  },
+  {
     id: "red-billed-hornbill",
     name: "Red Billed Hornbill",
     price: 1500,
