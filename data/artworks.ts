@@ -164,6 +164,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "red-masked-parakeet",
+    name: "Red Masked Parakeet",
+    price: 2000,
+    image: "/artworks/red_masked_parakeet-2000.jpg",
+    available: true,
+  },
+  {
     id: "saaya",
     name: "Saaya",
     price: 750,
