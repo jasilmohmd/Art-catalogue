@@ -101,6 +101,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "great-hornbill",
+    name: "Great Hornbill",
+    price: 2000,
+    image: "/artworks/great_hornbill-2000.jpg",
+    available: true,
+  },
+  {
     id: "grey-crowned-crane",
     name: "Grey Crowned Crane",
     price: 11000,
