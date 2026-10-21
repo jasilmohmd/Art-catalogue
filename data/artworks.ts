@@ -94,6 +94,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "northern-cardinal",
+    name: "Northern Cardinal",
+    price: 2000,
+    image: "/artworks/northern_cardinal-2000.jpg",
+    available: true,
+  },
+  {
     id: "orange-breasted-green-pigeons",
     name: "Orange Breasted Green Pigeons",
     price: 8000,
