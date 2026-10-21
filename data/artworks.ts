@@ -66,6 +66,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "coppersmith-barbet",
+    name: "Coppersmith Barbet",
+    price: 2000,
+    image: "/artworks/coppersmith_barbet-2000.jpg",
+    available: true,
+  },
+  {
     id: "crested-kingfisher",
     name: "Crested Kingfisher",
     price: 2000,
