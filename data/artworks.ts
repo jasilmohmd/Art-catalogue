@@ -87,6 +87,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "malabar-grey-hornbill-pair",
+    name: "Malabar Grey Hornbill Pair",
+    price: 2000,
+    image: "/artworks/malabar_grey_hornbill_pair-2000.jpg",
+    available: true,
+  },
+  {
     id: "morning-in-misty-woods",
     name: "Morning In Misty Woods",
     price: 9000,
