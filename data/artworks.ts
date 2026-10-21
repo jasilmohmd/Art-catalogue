@@ -31,6 +31,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "bengal-tiger",
+    name: "Bengal Tiger",
+    price: 2000,
+    image: "/artworks/bengal_tiger-2000.jpg",
+    available: true,
+  },
+  {
     id: "chandini-raat-whispers-on-the-moonlit-lake",
     name: "Chandini Raat Whispers On The Moonlit Lake",
     price: 15000,
