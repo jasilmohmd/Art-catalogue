@@ -108,6 +108,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "indian-spot-billed-duck",
+    name: "Indian Spot Billed Duck",
+    price: 2000,
+    image: "/artworks/indian_spot_billed_duck-2000.jpg",
+    available: true,
+  },
+  {
     id: "kadhakali",
     name: "Kadhakali",
     price: 8000,
