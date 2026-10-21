@@ -157,6 +157,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "mermaid",
+    name: "Mermaid",
+    price: 12000,
+    image: "/artworks/mermaid-12000.jpg",
+    available: true,
+  },
+  {
     id: "moonrise-pondicherry",
     name: "Moonrise Pondicherry",
     price: 6000,
