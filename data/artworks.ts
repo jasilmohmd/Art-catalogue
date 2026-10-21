@@ -38,6 +38,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "blue-tailed-bee-ester",
+    name: "Blue Tailed Bee Ester",
+    price: 2000,
+    image: "/artworks/blue_tailed_bee_ester-2000.jpg",
+    available: true,
+  },
+  {
     id: "chandini-raat-whispers-on-the-moonlit-lake",
     name: "Chandini Raat Whispers On The Moonlit Lake",
     price: 15000,
