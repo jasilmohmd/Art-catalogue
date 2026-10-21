@@ -52,6 +52,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "black-vented-oriole",
+    name: "Black Vented Oriole",
+    price: 2000,
+    image: "/artworks/black_vented_oriole-2000.jpg",
+    available: true,
+  },
+  {
     id: "blue-tailed-bee-ester",
     name: "Blue Tailed Bee Ester",
     price: 2000,
