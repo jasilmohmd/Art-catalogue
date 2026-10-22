@@ -59,6 +59,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "bird",
+    name: "Bird",
+    price: 4500,
+    image: "/artworks/bird-4500.jpg",
+    available: true,
+  },
+  {
     id: "birds-eye-view-maldives",
     name: "Birds Eye View Maldives",
     price: 6500,
