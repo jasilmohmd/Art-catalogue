@@ -241,6 +241,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "innocence",
+    name: "Innocence",
+    price: 12000,
+    image: "/artworks/innocence-12000-sold.jpg",
+    available: false,
+  },
+  {
     id: "kadhakali",
     name: "Kadhakali",
     price: 8000,
