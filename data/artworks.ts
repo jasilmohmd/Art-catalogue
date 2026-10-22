@@ -381,6 +381,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "serene-oil-on-canvas",
+    name: "Serene Oil On Canvas",
+    price: 15000,
+    image: "/artworks/serene_oil_on_canvas-15000-sold.jpg",
+    available: false,
+  },
+  {
     id: "soofi",
     name: "Soofi",
     price: 7500,
