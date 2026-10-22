@@ -150,6 +150,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "fern",
+    name: "Fern",
+    price: 6000,
+    image: "/artworks/fern-6000.jpg",
+    available: true,
+  },
+  {
     id: "gaint-squirrel",
     name: "Gaint Squirrel",
     price: 2000,
