@@ -339,6 +339,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "penguin",
+    name: "Penguin",
+    price: 5500,
+    image: "/artworks/penguin-5500-sold.jpg",
+    available: false,
+  },
+  {
     id: "pink-flowers",
     name: "Pink Flowers",
     price: 12000,
