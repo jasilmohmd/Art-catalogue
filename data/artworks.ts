@@ -171,6 +171,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "gelpen-work",
+    name: "Gelpen Work",
+    price: 2500,
+    image: "/artworks/gelpen_work-2500.jpg",
+    available: true,
+  },
+  {
     id: "girl",
     name: "Girl",
     price: 6000,
