@@ -157,6 +157,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "girl-with-violin",
+    name: "Girl With Violin",
+    price: 5000,
+    image: "/artworks/girl_with_violin-5000.jpg",
+    available: true,
+  },
+  {
     id: "global-warming",
     name: "Global Warming",
     price: 12000,
