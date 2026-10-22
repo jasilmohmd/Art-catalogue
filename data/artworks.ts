@@ -339,6 +339,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "water-colour",
+    name: "Water Colour",
+    price: 4000,
+    image: "/artworks/water_colour-4000.jpg",
+    available: true,
+  },
+  {
     id: "yakshi",
     name: "Yakshi",
     price: 7000,
