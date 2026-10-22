@@ -115,6 +115,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "cells",
+    name: "Cells",
+    price: 2500,
+    image: "/artworks/cells-2500-sold.jpg",
+    available: false,
+  },
+  {
     id: "chaandini-raat-whispers-on-moonlit-lake",
     name: "Chaandini Raat Whispers On Moonlit Lake",
     price: 15000,
