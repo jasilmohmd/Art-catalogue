@@ -318,6 +318,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "pink-flowers",
+    name: "Pink Flowers",
+    price: 12000,
+    image: "/artworks/pink_flowers-12000-sold.jpg",
+    available: false,
+  },
+  {
     id: "red-billed-hornbill",
     name: "Red Billed Hornbill",
     price: 1500,
