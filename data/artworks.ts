@@ -101,6 +101,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "blow-art-1",
+    name: "Blow Art 1",
+    price: 4500,
+    image: "/artworks/blow_art_1-4500.jpg",
+    available: true,
+  },
+  {
     id: "blue-bird",
     name: "Blue Bird",
     price: 3500,
