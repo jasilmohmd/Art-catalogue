@@ -164,6 +164,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "girl-water-colour",
+    name: "Girl Water Colour",
+    price: 4000,
+    image: "/artworks/girl_water_colour-4000.jpg",
+    available: true,
+  },
+  {
     id: "girl-with-violin",
     name: "Girl With Violin",
     price: 5000,
