@@ -171,6 +171,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "digital-paintings",
+    name: "Digital Paintings",
+    price: 3500,
+    image: "/artworks/digital_paintings-3500.jpg",
+    available: true,
+  },
+  {
     id: "elephant",
     name: "Elephant",
     price: 4500,
