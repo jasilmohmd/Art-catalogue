@@ -52,6 +52,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "acrylic-waterfall",
+    name: "Acrylic Waterfall",
+    price: 6000,
+    image: "/artworks/acrylic_waterfall-6000-sold.jpg",
+    available: false,
+  },
+  {
     id: "bald-eagle",
     name: "Bald Eagle",
     price: 15000,
