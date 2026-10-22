@@ -430,6 +430,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "reflection",
+    name: "Reflection",
+    price: 500,
+    image: "/artworks/reflection-500.jpg",
+    available: true,
+  },
+  {
     id: "saaya",
     name: "Saaya",
     price: 750,
