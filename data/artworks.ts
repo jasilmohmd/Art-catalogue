@@ -94,6 +94,13 @@ export const artworks: Artwork[] = [
     available: false,
   },
   {
+    id: "blue-sea",
+    name: "Blue Sea",
+    price: 4500,
+    image: "/artworks/blue_sea-4500.jpg",
+    available: true,
+  },
+  {
     id: "blue-tailed-bee-ester",
     name: "Blue Tailed Bee Ester",
     price: 2000,
