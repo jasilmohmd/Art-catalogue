@@ -353,6 +353,13 @@ export const artworks: Artwork[] = [
     available: false,
   },
   {
+    id: "pomogranate",
+    name: "Pomogranate",
+    price: 5500,
+    image: "/artworks/pomogranate-5500-sold.jpg",
+    available: false,
+  },
+  {
     id: "red-billed-hornbill",
     name: "Red Billed Hornbill",
     price: 1500,
