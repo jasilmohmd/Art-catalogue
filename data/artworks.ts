@@ -458,6 +458,13 @@ export const artworks: Artwork[] = [
     available: false,
   },
   {
+    id: "watercolour-3",
+    name: "Watercolour 3",
+    price: 2500,
+    image: "/artworks/watercolour_3-2500-sold.jpg",
+    available: false,
+  },
+  {
     id: "watercolour-painting1",
     name: "Watercolour Painting1",
     price: 2500,
