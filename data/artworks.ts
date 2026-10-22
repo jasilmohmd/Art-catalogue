@@ -332,6 +332,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "the-blue-guest",
+    name: "The Blue Guest",
+    price: 3500,
+    image: "/artworks/the_blue_guest-3500.jpg",
+    available: true,
+  },
+  {
     id: "the-forest-refuge",
     name: "The Forest Refuge",
     price: 15000,
