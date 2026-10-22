@@ -185,6 +185,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "grape",
+    name: "Grape",
+    price: 13000,
+    image: "/artworks/grape-13000.jpg",
+    available: true,
+  },
+  {
     id: "great-hornbill",
     name: "Great Hornbill",
     price: 2000,
