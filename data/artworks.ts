@@ -307,8 +307,8 @@ export const artworks: Artwork[] = [
     id: "grey-crowned-crane",
     name: "Grey Crowned Crane",
     price: 11000,
-    image: "/artworks/grey_crowned_crane-11000.jpg",
-    available: true,
+    image: "/artworks/grey_crowned_crane-11000-sold.jpg",
+    available: false,
   },
   {
     id: "hand",
