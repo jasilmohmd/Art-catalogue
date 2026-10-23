@@ -48,8 +48,8 @@ export const artworks: Artwork[] = [
     id: "acrylic-on-canvas",
     name: "Acrylic On Canvas",
     price: 4500,
-    image: "/artworks/acrylic_on_canvas-4500.jpg",
-    available: true,
+    image: "/artworks/acrylic_on_canvas-4500-sold.jpg",
+    available: false,
   },
   {
     id: "acrylic-waterfall",
