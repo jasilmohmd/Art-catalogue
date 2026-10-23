@@ -304,6 +304,13 @@ export const artworks: Artwork[] = [
     available: false,
   },
   {
+    id: "grey-hornbill-pair",
+    name: "Grey Hornbill Pair",
+    price: 2000,
+    image: "/artworks/grey_hornbill_pair-2000.jpg",
+    available: true,
+  },
+  {
     id: "hand",
     name: "Hand",
     price: 3000,
