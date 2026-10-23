@@ -279,8 +279,8 @@ export const artworks: Artwork[] = [
     id: "giant-squirrel",
     name: "Giant Squirrel",
     price: 2000,
-    image: "/artworks/giant_squirrel-2000.jpg",
-    available: true,
+    image: "/artworks/giant_squirrel-2000-sold.jpg",
+    available: false,
   },
   {
     id: "girl",
