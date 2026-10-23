@@ -59,6 +59,13 @@ export const artworks: Artwork[] = [
     available: false,
   },
   {
+    id: "african-spoonbill",
+    name: "African Spoonbill",
+    price: 2000,
+    image: "/artworks/african_spoonbill-2000.jpg",
+    available: true,
+  },
+  {
     id: "bald-eagle",
     name: "Bald Eagle",
     price: 15000,
