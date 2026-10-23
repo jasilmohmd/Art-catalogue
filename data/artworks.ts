@@ -384,8 +384,8 @@ export const artworks: Artwork[] = [
     id: "morning-in-misty-woods",
     name: "Morning In Misty Woods",
     price: 9000,
-    image: "/artworks/morning_in_misty_woods-9000.jpg",
-    available: true,
+    image: "/artworks/morning_in_misty_woods-9000-sold.jpg",
+    available: false,
   },
   {
     id: "northern-cardinal",
