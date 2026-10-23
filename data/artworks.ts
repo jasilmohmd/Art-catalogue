@@ -356,8 +356,8 @@ export const artworks: Artwork[] = [
     id: "lamp",
     name: "Lamp",
     price: 5000,
-    image: "/artworks/lamp-5000.jpg",
-    available: true,
+    image: "/artworks/lamp-5000-sold.jpg",
+    available: false,
   },
   {
     id: "malabar-grey-hornbill-pair",
