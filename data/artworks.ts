@@ -678,8 +678,8 @@ export const artworks: Artwork[] = [
     id: "watercolour-4",
     name: "Watercolour 4",
     price: 2500,
-    image: "/artworks/watercolour_4-2500.jpg",
-    available: true,
+    image: "/artworks/watercolour_4-2500-sold.jpg",
+    available: false,
   },
   {
     id: "watercolour-5",
