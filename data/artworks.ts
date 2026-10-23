@@ -517,8 +517,8 @@ export const artworks: Artwork[] = [
     id: "reflection",
     name: "Reflection",
     price: 500,
-    image: "/artworks/reflection-500.jpg",
-    available: true,
+    image: "/artworks/reflection-500-sold.jpg",
+    available: false,
   },
   {
     id: "saaya",
