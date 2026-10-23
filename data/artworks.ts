@@ -321,8 +321,8 @@ export const artworks: Artwork[] = [
     id: "great-hornbill",
     name: "Great Hornbill",
     price: 2000,
-    image: "/artworks/great_hornbill-2000.jpg",
-    available: true,
+    image: "/artworks/great_hornbill-2000-sold.jpg",
+    available: false,
   },
   {
     id: "grey-crowned-crane",
