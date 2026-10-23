@@ -426,8 +426,8 @@ export const artworks: Artwork[] = [
     id: "moonrise-pondicherry",
     name: "Moonrise Pondicherry",
     price: 6000,
-    image: "/artworks/moonrise_pondicherry-6000.jpg",
-    available: true,
+    image: "/artworks/moonrise_pondicherry-6000-sold.jpg",
+    available: false,
   },
   {
     id: "morning-in-misty-woods",
