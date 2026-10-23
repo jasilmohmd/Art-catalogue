@@ -545,8 +545,8 @@ export const artworks: Artwork[] = [
     id: "sunflower",
     name: "Sunflower",
     price: 6000,
-    image: "/artworks/sunflower-6000.jpg",
-    available: true,
+    image: "/artworks/sunflower-6000-sold.jpg",
+    available: false,
   },
   {
     id: "sunshine",
