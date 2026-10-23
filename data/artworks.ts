@@ -269,6 +269,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "giant-squirrel",
+    name: "Giant Squirrel",
+    price: 2000,
+    image: "/artworks/giant_squirrel-2000.jpg",
+    available: true,
+  },
+  {
     id: "girl",
     name: "Girl",
     price: 6000,
