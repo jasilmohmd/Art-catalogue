@@ -419,8 +419,8 @@ export const artworks: Artwork[] = [
     id: "painted-stork",
     name: "Painted Stork",
     price: 2000,
-    image: "/artworks/painted_stork-2000.jpg",
-    available: true,
+    image: "/artworks/painted_stork-2000-sold.jpg",
+    available: false,
   },
   {
     id: "painted-stork-building-a-nest",
