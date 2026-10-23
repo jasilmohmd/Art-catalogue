@@ -577,13 +577,6 @@ export const artworks: Artwork[] = [
     available: false,
   },
   {
-    id: "under-watet-life",
-    name: "Under Watet Life",
-    price: 15000,
-    image: "/artworks/under_watet_life-15000.jpg",
-    available: true,
-  },
-  {
     id: "underwater-life",
     name: "Underwater Life",
     price: 15000,
