@@ -538,8 +538,8 @@ export const artworks: Artwork[] = [
     id: "sandhya",
     name: "Sandhya",
     price: 750,
-    image: "/artworks/sandhya-750.jpg",
-    available: true,
+    image: "/artworks/sandhya-750-sold.jpg",
+    available: false,
   },
   {
     id: "scarlet-ibis",
