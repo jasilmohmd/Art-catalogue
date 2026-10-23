@@ -230,8 +230,8 @@ export const artworks: Artwork[] = [
     id: "digital-paintings",
     name: "Digital Paintings",
     price: 3500,
-    image: "/artworks/digital_paintings-3500.jpg",
-    available: true,
+    image: "/artworks/digital_paintings-3500-sold.jpg",
+    available: false,
   },
   {
     id: "digital-paintings-print",
