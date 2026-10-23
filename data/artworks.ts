@@ -440,8 +440,8 @@ export const artworks: Artwork[] = [
     id: "northern-cardinal",
     name: "Northern Cardinal",
     price: 2000,
-    image: "/artworks/northern_cardinal-2000.jpg",
-    available: true,
+    image: "/artworks/northern_cardinal-2000-sold.jpg",
+    available: false,
   },
   {
     id: "ocean-wave",
