@@ -321,8 +321,8 @@ export const artworks: Artwork[] = [
     id: "happy-day",
     name: "Happy Day",
     price: 7500,
-    image: "/artworks/happy_day-7500.jpg",
-    available: true,
+    image: "/artworks/happy_day-7500-sold.jpg",
+    available: false,
   },
   {
     id: "indian-spot-billed-duck",
