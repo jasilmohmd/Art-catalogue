@@ -80,6 +80,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "billed-duck",
+    name: "Billed Duck",
+    price: 2000,
+    image: "/artworks/billed_duck-2000.jpg",
+    available: true,
+  },
+  {
     id: "bird",
     name: "Bird",
     price: 4500,
