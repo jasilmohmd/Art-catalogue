@@ -34,8 +34,8 @@ export const artworks: Artwork[] = [
     id: "abundance",
     name: "Abundance",
     price: 13000,
-    image: "/artworks/abundance-13000.jpg",
-    available: true,
+    image: "/artworks/abundance-13000-sold.jpg",
+    available: false,
   },
   {
     id: "acrylic-abstract-sea",
