@@ -629,8 +629,8 @@ export const artworks: Artwork[] = [
     id: "the-forest-refuge",
     name: "The Forest Refuge",
     price: 15000,
-    image: "/artworks/the_forest_refuge-15000.jpg",
-    available: true,
+    image: "/artworks/the_forest_refuge-15000-sold.jpg",
+    available: false,
   },
   {
     id: "tiger",
