@@ -27,8 +27,8 @@ export const artworks: Artwork[] = [
     id: "a-young-male-lion-cub",
     name: "A Young Male Lion Cub",
     price: 2000,
-    image: "/artworks/a_young_male_lion_cub-2000.jpg",
-    available: true,
+    image: "/artworks/a_young_male_lion_cub-2000-sold.jpg",
+    available: false,
   },
   {
     id: "abundance",
