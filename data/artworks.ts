@@ -76,8 +76,8 @@ export const artworks: Artwork[] = [
     id: "bengal-tiger",
     name: "Bengal Tiger",
     price: 2000,
-    image: "/artworks/bengal_tiger-2000.jpg",
-    available: true,
+    image: "/artworks/bengal_tiger-2000-sold.jpg",
+    available: false,
   },
   {
     id: "billed-duck",
