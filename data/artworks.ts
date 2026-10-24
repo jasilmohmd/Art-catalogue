@@ -384,8 +384,8 @@ export const artworks: Artwork[] = [
     id: "kingfisher",
     name: "Kingfisher",
     price: 4500,
-    image: "/artworks/kingfisher-4500.jpg",
-    available: true,
+    image: "/artworks/kingfisher-4500-sold.jpg",
+    available: false,
   },
   {
     id: "lamp",
