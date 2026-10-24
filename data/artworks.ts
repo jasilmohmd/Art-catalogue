@@ -174,8 +174,8 @@ export const artworks: Artwork[] = [
     id: "cell-2",
     name: "Cell 2",
     price: 2500,
-    image: "/artworks/cell_2-2500.jpg",
-    available: true,
+    image: "/artworks/cell_2-2500-sold.jpg",
+    available: false,
   },
   {
     id: "cells",
