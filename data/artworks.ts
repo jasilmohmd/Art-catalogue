@@ -510,8 +510,8 @@ export const artworks: Artwork[] = [
     id: "red-billed-hornbill",
     name: "Red Billed Hornbill",
     price: 1500,
-    image: "/artworks/red_billed_hornbill-1500.jpg",
-    available: true,
+    image: "/artworks/red_billed_hornbill-1500-sold.jpg",
+    available: false,
   },
   {
     id: "red-masked-parakeet",
