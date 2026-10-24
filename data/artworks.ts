@@ -412,8 +412,8 @@ export const artworks: Artwork[] = [
     id: "malabar-grey-hornbill-pair",
     name: "Malabar Grey Hornbill Pair",
     price: 2000,
-    image: "/artworks/malabar_grey_hornbill_pair-2000.jpg",
-    available: true,
+    image: "/artworks/malabar_grey_hornbill_pair-2000-sold.jpg",
+    available: false,
   },
   {
     id: "malabar-kingfisher",
