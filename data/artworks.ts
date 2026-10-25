@@ -720,7 +720,7 @@ export const artworks: Artwork[] = [
     id: "yellow-winged-tanager",
     name: "Yellow Winged Tanager",
     price: 2000,
-    image: "/artworks/yellow_winged_tanager-2000.jpg",
-    available: true,
+    image: "/artworks/yellow_winged_tanager-2000-sold.jpg",
+    available: false,
   },
 ];
