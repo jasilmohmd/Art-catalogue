@@ -265,8 +265,8 @@ export const artworks: Artwork[] = [
     id: "flower",
     name: "Flower",
     price: 3000,
-    image: "/artworks/flower-3000.jpg",
-    available: true,
+    image: "/artworks/flower-3000-sold.jpg",
+    available: false,
   },
   {
     id: "gaint-squirrel",
