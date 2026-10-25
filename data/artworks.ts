@@ -587,8 +587,8 @@ export const artworks: Artwork[] = [
     id: "squirrel",
     name: "Squirrel",
     price: 2000,
-    image: "/artworks/squirrel-2000.jpg",
-    available: true,
+    image: "/artworks/squirrel-2000-sold.jpg",
+    available: false,
   },
   {
     id: "storm",
