@@ -167,8 +167,8 @@ export const artworks: Artwork[] = [
     id: "blue-throated-barbet",
     name: "Blue Throated Barbet",
     price: 2000,
-    image: "/artworks/blue_throated_barbet-2000.jpg",
-    available: true,
+    image: "/artworks/blue_throated_barbet-2000-sold.jpg",
+    available: false,
   },
   {
     id: "cell-2",
