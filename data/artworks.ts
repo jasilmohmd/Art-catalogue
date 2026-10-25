@@ -559,8 +559,8 @@ export const artworks: Artwork[] = [
     id: "sea",
     name: "Sea",
     price: 6000,
-    image: "/artworks/sea-6000.jpg",
-    available: true,
+    image: "/artworks/sea-6000-sold.jpg",
+    available: false,
   },
   {
     id: "serene-oil-on-canvas",
