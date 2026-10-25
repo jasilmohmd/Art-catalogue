@@ -209,8 +209,8 @@ export const artworks: Artwork[] = [
     id: "cherry-blossom",
     name: "Cherry Blossom",
     price: 12000,
-    image: "/artworks/cherry_blossom-12000.jpg",
-    available: true,
+    image: "/artworks/cherry_blossom-12000-sold.jpg",
+    available: false,
   },
   {
     id: "coppersmith-barbet",
