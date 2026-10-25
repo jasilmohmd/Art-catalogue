@@ -538,8 +538,8 @@ export const artworks: Artwork[] = [
     id: "sail-boat",
     name: "Sail Boat",
     price: 13000,
-    image: "/artworks/sail_boat-13000.jpg",
-    available: true,
+    image: "/artworks/sail_boat-13000-sold.jpg",
+    available: false,
   },
   {
     id: "sandhya",
