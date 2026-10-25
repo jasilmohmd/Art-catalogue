@@ -104,8 +104,8 @@ export const artworks: Artwork[] = [
     id: "black-vented-oriole",
     name: "Black Vented Oriole",
     price: 2000,
-    image: "/artworks/black_vented_oriole-2000.jpg",
-    available: true,
+    image: "/artworks/black_vented_oriole-2000-sold.jpg",
+    available: false,
   },
   {
     id: "blow-art-1",
