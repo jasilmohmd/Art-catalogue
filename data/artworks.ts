@@ -272,8 +272,8 @@ export const artworks: Artwork[] = [
     id: "gaint-squirrel",
     name: "Gaint Squirrel",
     price: 2000,
-    image: "/artworks/gaint_squirrel-2000.jpg",
-    available: true,
+    image: "/artworks/gaint_squirrel-2000-sold.jpg",
+    available: false,
   },
   {
     id: "gelpen-work",
