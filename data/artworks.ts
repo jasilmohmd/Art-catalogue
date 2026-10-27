@@ -367,6 +367,13 @@ export const artworks: Artwork[] = [
     available: false,
   },
   {
+    id: "impala",
+    name: "Impala",
+    price: 2000,
+    image: "/artworks/impala-2000.jpg",
+    available: true,
+  },
+  {
     id: "indian-spot-billed-duck",
     name: "Indian Spot Billed Duck",
     price: 2000,
