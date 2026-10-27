@@ -405,8 +405,8 @@ export const artworks: Artwork[] = [
     id: "lion-cub",
     name: "Lion Cub",
     price: 2000,
-    image: "/artworks/lion_cub-2000-sold.jpg",
-    available: false,
+    image: "/artworks/lion_cub-2000.jpg",
+    available: true,
   },
   {
     id: "malabar-grey-hornbill-pair",
