@@ -542,6 +542,13 @@ export const artworks: Artwork[] = [
     available: false,
   },
   {
+    id: "ruppells-weaver",
+    name: "Ruppells Weaver",
+    price: 2000,
+    image: "/artworks/ruppells_weaver-2000.jpg",
+    available: true,
+  },
+  {
     id: "saaya",
     name: "Saaya",
     price: 750,
