@@ -290,6 +290,13 @@ export const artworks: Artwork[] = [
     available: false,
   },
   {
+    id: "gaur",
+    name: "Gaur",
+    price: 2000,
+    image: "/artworks/gaur-2000.jpg",
+    available: true,
+  },
+  {
     id: "gelpen-work",
     name: "Gelpen Work",
     price: 2500,
