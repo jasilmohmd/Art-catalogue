@@ -213,6 +213,13 @@ export const artworks: Artwork[] = [
     available: true,
   },
   {
+    id: "cheetah-3",
+    name: "Cheetah 3",
+    price: 2000,
+    image: "/artworks/cheetah_3-2000.jpg",
+    available: true,
+  },
+  {
     id: "cherry-blossom",
     name: "Cherry Blossom",
     price: 12000,
