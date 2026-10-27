@@ -202,8 +202,8 @@ export const artworks: Artwork[] = [
     id: "cheetah",
     name: "Cheetah",
     price: 2000,
-    image: "/artworks/cheetah-2000-sold.jpg",
-    available: false,
+    image: "/artworks/cheetah-2000.jpg",
+    available: true,
   },
   {
     id: "cheetah-2",
