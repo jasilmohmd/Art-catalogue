@@ -594,8 +594,8 @@ export const artworks: Artwork[] = [
     id: "scarlet-ibis",
     name: "Scarlet Ibis",
     price: 8000,
-    image: "/artworks/scarlet_ibis-8000.jpg",
-    available: true,
+    image: "/artworks/scarlet_ibis-8000-sold.jpg",
+    available: false,
   },
   {
     id: "sea",
