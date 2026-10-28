@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
@@ -10,6 +10,8 @@ import SortMenu from "@/components/SortMenu";
 import BuyButton from "@/components/BuyButton";
 
 const HIDE_DELAY_MS = 2000;
+// Divisible by 2, 3 and 4 so each batch fills whole rows at every grid width.
+const PAGE_SIZE = 12;
 
 type SortOrder = "name" | "price-asc" | "price-desc";
 
@@ -26,6 +28,12 @@ function compareArtworks(sort: SortOrder) {
     if (sort === "price-desc") return b.price - a.price || byName;
     return byName;
   };
+}
+
+function arrange(artworks: Artwork[], availableOnly: boolean, sort: SortOrder) {
+  return (availableOnly ? artworks.filter((a) => a.available) : [...artworks]).sort(
+    compareArtworks(sort)
+  );
 }
 
 type ArtworkSlide = {
@@ -81,6 +89,12 @@ export default function Gallery({ artworks }: { artworks: Artwork[] }) {
   const [sort, setSort] = useState<SortOrder>("name");
   const [stuck, setStuck] = useState(false);
   const sentinelRef = useRef<HTMLDivElement>(null);
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const loaderRef = useRef<HTMLDivElement>(null);
+  const toolbarRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+  // The painting to hold in place across a filter/sort change, and where it sat on screen.
+  const pendingAnchorRef = useRef<{ id: string; top: number } | null>(null);
   const [zoomed, setZoomed] = useState(false);
   const [timerVisible, setTimerVisible] = useState(true);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -127,31 +141,89 @@ export default function Gallery({ artworks }: { artworks: Artwork[] }) {
     return () => observer.disconnect();
   }, []);
 
-  // When the results change while scrolled deep into the grid, return to the first result.
-  const scrollToResultsStart = () => {
-    if (stuck) sentinelRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  // Changing the filter or sort while scrolled into the grid keeps the first painting the
+  // visitor can see at the same screen position; the grid rearranges around it.
+  const applyView = (nextAvailableOnly: boolean, nextSort: SortOrder) => {
+    if (nextAvailableOnly === availableOnly && nextSort === sort) return;
+    pendingAnchorRef.current = null;
+
+    const cards =
+      stuck && gridRef.current
+        ? Array.from(gridRef.current.querySelectorAll<HTMLElement>("[data-artwork-id]"))
+        : [];
+    const barBottom = toolbarRef.current?.getBoundingClientRect().bottom ?? 0;
+    const firstSeen = cards.findIndex((card) => card.getBoundingClientRect().bottom > barBottom);
+
+    if (firstSeen >= 0) {
+      const nextIndexById = new Map(
+        arrange(artworks, nextAvailableOnly, nextSort).map((a, i) => [a.id, i])
+      );
+      // Prefer the first visible painting; if it's filtered out, the next one the visitor
+      // would have reached, then the ones before it.
+      const target = [...cards.slice(firstSeen), ...cards.slice(0, firstSeen).reverse()].find(
+        (card) => nextIndexById.has(card.dataset.artworkId!)
+      );
+      if (target) {
+        const nextIndex = nextIndexById.get(target.dataset.artworkId!)!;
+        pendingAnchorRef.current = {
+          id: target.dataset.artworkId!,
+          top: cards[firstSeen].getBoundingClientRect().top,
+        };
+        setVisibleCount((count) =>
+          Math.max(count, Math.ceil((nextIndex + 1) / PAGE_SIZE) * PAGE_SIZE)
+        );
+      } else {
+        sentinelRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    setAvailableOnly(nextAvailableOnly);
+    setSort(nextSort);
   };
 
-  const chooseAvailability = (value: boolean) => {
-    setAvailableOnly(value);
-    scrollToResultsStart();
-  };
-
-  const chooseSort = (value: SortOrder) => {
-    setSort(value);
-    scrollToResultsStart();
-  };
+  const chooseAvailability = (value: boolean) => applyView(value, sort);
+  const chooseSort = (value: SortOrder) => applyView(availableOnly, value);
 
   const visible = timerVisible && !zoomed;
 
   // The grid and lightbox share this list so slide indexes match the visible cards.
   const shown = useMemo(
-    () =>
-      (availableOnly ? artworks.filter((a) => a.available) : [...artworks]).sort(
-        compareArtworks(sort)
-      ),
+    () => arrange(artworks, availableOnly, sort),
     [artworks, availableOnly, sort]
   );
+
+  const rendered = shown.slice(0, visibleCount);
+
+  // Runs before paint, so the anchored painting never visibly jumps.
+  useLayoutEffect(() => {
+    const anchor = pendingAnchorRef.current;
+    if (!anchor) return;
+    const card = gridRef.current?.querySelector<HTMLElement>(
+      `[data-artwork-id="${CSS.escape(anchor.id)}"]`
+    );
+    if (!card) return;
+    pendingAnchorRef.current = null;
+    // "instant" overrides the page-wide `scroll-behavior: smooth` in globals.css.
+    window.scrollBy({ top: card.getBoundingClientRect().top - anchor.top, behavior: "instant" });
+  }, [shown, visibleCount]);
+  const hasMore = visibleCount < shown.length;
+
+  // Render the next batch as the spinner nears the viewport. The observer is recreated after
+  // each batch, so if the spinner is still on screen (tall window) it loads again right away.
+  useEffect(() => {
+    const loader = loaderRef.current;
+    if (!hasMore || !loader) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisibleCount((count) => Math.min(count + PAGE_SIZE, shown.length));
+        }
+      },
+      { rootMargin: "400px 0px" }
+    );
+    observer.observe(loader);
+    return () => observer.disconnect();
+  }, [hasMore, visibleCount, shown.length]);
 
   const availableCount = useMemo(
     () => artworks.filter((a) => a.available).length,
@@ -186,6 +258,7 @@ export default function Gallery({ artworks }: { artworks: Artwork[] }) {
       </p>
       <div ref={sentinelRef} aria-hidden="true" className="h-px scroll-mt-10" />
       <div
+        ref={toolbarRef}
         className={`sticky top-3 z-20 -mx-3 mb-6 flex items-center justify-between gap-3 rounded-2xl border px-3 py-2 transition-[background-color,border-color,box-shadow] duration-300 ${
           stuck
             ? "border-stone-200 bg-white/85 shadow-md backdrop-blur-md"
@@ -248,11 +321,25 @@ export default function Gallery({ artworks }: { artworks: Artwork[] }) {
       </div>
 
       {shown.length > 0 ? (
-        <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3">
-          {shown.map((a, i) => (
-            <ArtworkCard key={a.id} artwork={a} onImageClick={() => setIndex(i)} />
-          ))}
-        </div>
+        <>
+          <div ref={gridRef} className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
+            {rendered.map((a, i) => (
+              // `grid` lets the card stretch to the row height so buy buttons stay aligned.
+              <div key={a.id} data-artwork-id={a.id} className="grid animate-fade-in-up">
+                <ArtworkCard artwork={a} onImageClick={() => setIndex(i)} />
+              </div>
+            ))}
+          </div>
+          {hasMore && (
+            <div ref={loaderRef} role="status" className="flex justify-center py-10">
+              <span
+                aria-hidden="true"
+                className="h-6 w-6 animate-spin rounded-full border-2 border-stone-300 border-t-stone-700"
+              />
+              <span className="sr-only">Loading more artworks</span>
+            </div>
+          )}
+        </>
       ) : (
         <p className="py-20 text-center text-sm text-stone-400">
           Everything is sold right now — check back soon.
@@ -267,9 +354,11 @@ export default function Gallery({ artworks }: { artworks: Artwork[] }) {
         plugins={[Zoom]}
         zoom={{ maxZoomPixelRatio: 3, scrollToZoom: true }}
         on={{
-          view: () => {
+          view: ({ index: viewed }) => {
             setZoomed(false);
             bump();
+            // Swiping past the loaded cards loads them into the grid too, so it matches on close.
+            setVisibleCount((count) => Math.max(count, viewed + 1));
           },
           zoom: ({ zoom }) => setZoomed(zoom > 1.01),
         }}

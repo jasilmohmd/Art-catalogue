@@ -25,7 +25,7 @@ export default function ArtworkCard({ artwork, onImageClick }: ArtworkCardProps)
           className={`object-cover transition-transform duration-500 ${
             available ? "group-hover:scale-105" : "grayscale"
           }`}
-          sizes="(min-width: 1024px) 33vw, 50vw"
+          sizes="(min-width: 1280px) 280px, (min-width: 1024px) 33vw, 50vw"
         />
         {!available && (
           <div className="absolute inset-0 flex items-center justify-center bg-stone-900/40">
