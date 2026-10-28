@@ -248,7 +248,7 @@ export default function Gallery({ artworks }: { artworks: Artwork[] }) {
       </div>
 
       {shown.length > 0 ? (
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3">
           {shown.map((a, i) => (
             <ArtworkCard key={a.id} artwork={a} onImageClick={() => setIndex(i)} />
           ))}

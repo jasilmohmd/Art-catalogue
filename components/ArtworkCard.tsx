@@ -25,7 +25,7 @@ export default function ArtworkCard({ artwork, onImageClick }: ArtworkCardProps)
           className={`object-cover transition-transform duration-500 ${
             available ? "group-hover:scale-105" : "grayscale"
           }`}
-          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+          sizes="(min-width: 1024px) 33vw, 50vw"
         />
         {!available && (
           <div className="absolute inset-0 flex items-center justify-center bg-stone-900/40">
@@ -35,16 +35,17 @@ export default function ArtworkCard({ artwork, onImageClick }: ArtworkCardProps)
           </div>
         )}
       </button>
-      <div className="flex flex-1 flex-col gap-1 p-5">
-        <h2 className="font-display text-lg leading-snug text-stone-900">{name}</h2>
-        <p className="text-sm font-medium text-stone-500">
+      <div className="flex flex-1 flex-col gap-1 p-3 sm:p-5">
+        <h2 className="font-display text-sm leading-snug text-stone-900 sm:text-lg">{name}</h2>
+        <p className="text-xs font-medium text-stone-500 sm:text-sm">
           ₹{price.toLocaleString("en-IN")}
         </p>
-        <div className="mt-4 pt-1">
+        {/* mt-auto keeps buttons aligned along a row when titles wrap to different lengths. */}
+        <div className="mt-auto pt-3 sm:pt-5">
           {available ? (
             <BuyButton artworkName={name} price={price} />
           ) : (
-            <span className="block w-full rounded-full bg-stone-100 px-4 py-2.5 text-center text-sm font-medium text-stone-400">
+            <span className="block w-full rounded-full bg-stone-100 px-3 py-2 text-center text-xs font-medium text-stone-400 sm:px-4 sm:py-2.5 sm:text-sm">
               Not available
             </span>
           )}
