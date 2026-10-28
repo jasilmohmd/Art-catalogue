@@ -16,7 +16,7 @@ export default function ArtworkCard({ artwork, onImageClick }: ArtworkCardProps)
         type="button"
         onClick={onImageClick}
         aria-label={`View ${name} fullscreen`}
-        className="relative block aspect-[4/5] w-full cursor-zoom-in overflow-hidden bg-stone-100"
+        className="relative block aspect-[4/5] w-full cursor-pointer overflow-hidden bg-stone-100"
       >
         <Image
           src={image}

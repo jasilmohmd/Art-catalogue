@@ -7,6 +7,7 @@ import "yet-another-react-lightbox/styles.css";
 import type { Artwork } from "@/data/artworks";
 import ArtworkCard from "@/components/ArtworkCard";
 import SortMenu from "@/components/SortMenu";
+import BuyButton from "@/components/BuyButton";
 
 const HIDE_DELAY_MS = 2000;
 
@@ -38,17 +39,38 @@ type ArtworkSlide = {
 function Caption({ slide, visible }: { slide: ArtworkSlide; visible: boolean }) {
   return (
     <div
-      className={`pointer-events-none absolute bottom-4 left-4 z-20 max-w-[75%] transition-opacity duration-300 ${
+      aria-hidden={!visible}
+      className={`pointer-events-none absolute inset-x-0 bottom-0 z-20 transition-opacity duration-300 ${
         visible ? "opacity-100" : "opacity-0"
       }`}
     >
-      <p className="font-display text-base text-white drop-shadow-md sm:text-lg">
-        {slide.name}
-      </p>
-      <p className="text-sm text-white/80 drop-shadow-md">
-        ₹{slide.price.toLocaleString("en-IN")}
-        {!slide.available && " · Sold"}
-      </p>
+      {/* Scrim keeps the white text and outlined button readable over light paintings. */}
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/60 to-transparent" />
+      <div className="relative flex items-end justify-between gap-4 px-4 pb-4">
+        <div className="min-w-0">
+          <p className="font-display text-base text-white drop-shadow-md sm:text-lg">
+            {slide.name}
+          </p>
+          <p className="text-sm text-white/80 drop-shadow-md">
+            ₹{slide.price.toLocaleString("en-IN")}
+          </p>
+        </div>
+        {/* Only clickable while shown, so a faded-out button can't be tapped by accident. */}
+        <div className={`shrink-0 ${visible ? "pointer-events-auto" : ""}`}>
+          {slide.available ? (
+            <BuyButton
+              tone="dark"
+              artworkName={slide.name}
+              price={slide.price}
+              tabIndex={visible ? undefined : -1}
+            />
+          ) : (
+            <span className="inline-block rounded-full border border-white/40 px-4 py-2 text-xs font-medium uppercase tracking-wide text-white/70">
+              Sold
+            </span>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
@@ -83,6 +105,15 @@ export default function Gallery({ artworks }: { artworks: Artwork[] }) {
       if (timerRef.current) clearTimeout(timerRef.current);
     };
   }, []);
+
+  // The lightbox only reports clicks on the image itself, so any touch or click anywhere
+  // on screen (including the dark backdrop) re-shows the caption and arrows.
+  const lightboxOpen = index >= 0;
+  useEffect(() => {
+    if (!lightboxOpen) return;
+    document.addEventListener("pointerdown", bump, true);
+    return () => document.removeEventListener("pointerdown", bump, true);
+  }, [lightboxOpen, bump]);
 
   // The toolbar is stuck once the zero-height marker above it scrolls out of view.
   useEffect(() => {
@@ -229,7 +260,7 @@ export default function Gallery({ artworks }: { artworks: Artwork[] }) {
       )}
 
       <Lightbox
-        open={index >= 0}
+        open={lightboxOpen}
         close={() => setIndex(-1)}
         index={index}
         slides={slides}
@@ -240,7 +271,6 @@ export default function Gallery({ artworks }: { artworks: Artwork[] }) {
             setZoomed(false);
             bump();
           },
-          click: () => bump(),
           zoom: ({ zoom }) => setZoomed(zoom > 1.01),
         }}
         render={{
