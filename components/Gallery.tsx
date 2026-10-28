@@ -12,10 +12,10 @@ const HIDE_DELAY_MS = 2000;
 
 type SortOrder = "name" | "price-asc" | "price-desc";
 
-const SORT_OPTIONS: { value: SortOrder; label: string }[] = [
-  { value: "name", label: "Name A–Z" },
-  { value: "price-asc", label: "Price: low → high" },
-  { value: "price-desc", label: "Price: high → low" },
+const SORT_OPTIONS: { value: SortOrder; label: string; short: string }[] = [
+  { value: "name", label: "Name A–Z", short: "A–Z" },
+  { value: "price-asc", label: "Price: low → high", short: "Price ↑" },
+  { value: "price-desc", label: "Price: high → low", short: "Price ↓" },
 ];
 
 function compareArtworks(sort: SortOrder) {
@@ -57,6 +57,8 @@ export default function Gallery({ artworks }: { artworks: Artwork[] }) {
   const [index, setIndex] = useState(-1);
   const [availableOnly, setAvailableOnly] = useState(false);
   const [sort, setSort] = useState<SortOrder>("name");
+  const [stuck, setStuck] = useState(false);
+  const sentinelRef = useRef<HTMLDivElement>(null);
   const [zoomed, setZoomed] = useState(false);
   const [timerVisible, setTimerVisible] = useState(true);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -82,6 +84,33 @@ export default function Gallery({ artworks }: { artworks: Artwork[] }) {
     };
   }, []);
 
+  // The toolbar is stuck once the zero-height marker above it scrolls out of view.
+  useEffect(() => {
+    const sentinel = sentinelRef.current;
+    if (!sentinel) return;
+    // The negative top margin matches the bar's `top-3` offset, so "stuck" flips exactly when it pins.
+    const observer = new IntersectionObserver(([entry]) => setStuck(!entry.isIntersecting), {
+      rootMargin: "-12px 0px 0px 0px",
+    });
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, []);
+
+  // When the results change while scrolled deep into the grid, return to the first result.
+  const scrollToResultsStart = () => {
+    if (stuck) sentinelRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const chooseAvailability = (value: boolean) => {
+    setAvailableOnly(value);
+    scrollToResultsStart();
+  };
+
+  const chooseSort = (value: SortOrder) => {
+    setSort(value);
+    scrollToResultsStart();
+  };
+
   const visible = timerVisible && !zoomed;
 
   // The grid and lightbox share this list so slide indexes match the visible cards.
@@ -97,6 +126,10 @@ export default function Gallery({ artworks }: { artworks: Artwork[] }) {
     () => artworks.filter((a) => a.available).length,
     [artworks]
   );
+
+  const countLabel = availableOnly
+    ? `Showing ${shown.length} of ${artworks.length}`
+    : `${artworks.length} ${artworks.length === 1 ? "artwork" : "artworks"}`;
 
   const segments = [
     { availableOnly: false, label: "All", count: artworks.length },
@@ -117,18 +150,26 @@ export default function Gallery({ artworks }: { artworks: Artwork[] }) {
 
   return (
     <>
-      <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <p aria-live="polite" className="text-sm text-stone-400">
-          {availableOnly
-            ? `Showing ${shown.length} of ${artworks.length}`
-            : `${artworks.length} ${artworks.length === 1 ? "artwork" : "artworks"}`}
+      <p aria-live="polite" className="mb-2 text-sm text-stone-400 sm:hidden">
+        {countLabel}
+      </p>
+      <div ref={sentinelRef} aria-hidden="true" className="h-px scroll-mt-10" />
+      <div
+        className={`sticky top-3 z-20 -mx-3 mb-6 flex items-center justify-between gap-3 rounded-2xl border px-3 py-2 transition-[background-color,border-color,box-shadow] duration-300 ${
+          stuck
+            ? "border-stone-200 bg-white/85 shadow-md backdrop-blur-md"
+            : "border-transparent bg-transparent shadow-none"
+        }`}
+      >
+        <p aria-live="polite" className="hidden text-sm text-stone-400 sm:block">
+          {countLabel}
         </p>
 
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+        <div className="flex w-full items-center gap-2 sm:w-auto">
           <div
             role="radiogroup"
             aria-label="Filter artworks"
-            className="relative grid h-10 w-full grid-cols-2 rounded-full border border-stone-200 bg-white p-1 shadow-sm sm:w-auto"
+            className="relative grid h-10 flex-none grid-cols-2 rounded-full border border-stone-200 bg-white p-1 shadow-sm"
           >
             <span
               aria-hidden="true"
@@ -145,23 +186,25 @@ export default function Gallery({ artworks }: { artworks: Artwork[] }) {
                   role="radio"
                   aria-checked={active}
                   tabIndex={active ? 0 : -1}
-                  onClick={() => setAvailableOnly(segment.availableOnly)}
+                  onClick={() => chooseAvailability(segment.availableOnly)}
                   onKeyDown={(e) => {
                     // Radio-group keyboard pattern: arrows move between the two segments.
                     if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(e.key)) return;
                     e.preventDefault();
-                    setAvailableOnly(!availableOnly);
+                    chooseAvailability(!availableOnly);
                     const sibling = e.currentTarget.parentElement?.querySelector<HTMLButtonElement>(
                       '[role="radio"]:not([aria-checked="true"])'
                     );
                     sibling?.focus();
                   }}
-                  className={`relative z-10 flex items-center justify-center gap-1.5 rounded-full px-4 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-400 ${
+                  className={`relative z-10 flex items-center justify-center gap-1.5 rounded-full px-3 text-sm font-medium sm:px-4 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-400 ${
                     active ? "text-white" : "text-stone-500 hover:text-stone-900"
                   }`}
                 >
                   {segment.label}
-                  <span className={`text-xs ${active ? "text-white/60" : "text-stone-400"}`}>
+                  <span
+                    className={`hidden text-xs sm:inline ${active ? "text-white/60" : "text-stone-400"}`}
+                  >
                     {segment.count}
                   </span>
                 </button>
@@ -169,7 +212,7 @@ export default function Gallery({ artworks }: { artworks: Artwork[] }) {
             })}
           </div>
 
-          <SortMenu options={SORT_OPTIONS} value={sort} onChange={setSort} />
+          <SortMenu options={SORT_OPTIONS} value={sort} onChange={chooseSort} />
         </div>
       </div>
 

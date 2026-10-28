@@ -3,7 +3,7 @@
 import { useEffect, useId, useRef, useState, type KeyboardEvent } from "react";
 
 type SortMenuProps<T extends string> = {
-  options: { value: T; label: string }[];
+  options: { value: T; label: string; short?: string }[];
   value: T;
   onChange: (value: T) => void;
 };
@@ -79,7 +79,7 @@ export default function SortMenu<T extends string>({ options, value, onChange }:
   };
 
   return (
-    <div ref={rootRef} className="relative w-full sm:w-52">
+    <div ref={rootRef} className="relative min-w-0 flex-1 sm:w-52 sm:flex-none">
       <button
         type="button"
         role="combobox"
@@ -106,7 +106,12 @@ export default function SortMenu<T extends string>({ options, value, onChange }:
         >
           <path d="M6 3v14M3 6l3-3 3 3M14 17V3M11 14l3 3 3-3" />
         </svg>
-        <span className="flex-1 truncate text-left">{options[selectedIndex].label}</span>
+        <span className="flex-1 truncate text-left">
+          <span className="sm:hidden">
+            {options[selectedIndex].short ?? options[selectedIndex].label}
+          </span>
+          <span className="hidden sm:inline">{options[selectedIndex].label}</span>
+        </span>
         <svg
           viewBox="0 0 20 20"
           fill="none"
@@ -127,7 +132,7 @@ export default function SortMenu<T extends string>({ options, value, onChange }:
         id={listId}
         role="listbox"
         aria-label="Sort artworks"
-        className={`absolute right-0 z-30 mt-2 w-full origin-top rounded-2xl border border-stone-200 bg-white p-1.5 shadow-lg transition duration-150 ease-out ${
+        className={`absolute right-0 z-30 mt-2 w-full min-w-[13rem] origin-top-right rounded-2xl border border-stone-200 bg-white p-1.5 shadow-lg transition duration-150 ease-out ${
           open ? "visible scale-100 opacity-100" : "invisible scale-95 opacity-0"
         }`}
       >
